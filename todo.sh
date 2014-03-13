@@ -44,7 +44,7 @@ shorthelp()
 
 		  Actions:
 		    add|a "THING I NEED TO DO +project @context"
-		    addm "THINGS I NEED TO DO
+		    addm|am "THINGS I NEED TO DO
 		          MORE THINGS I NEED TO DO"
 		    addto DEST "TEXT TO ADD"
 		    append|app ITEM# "TEXT TO APPEND"
@@ -168,6 +168,8 @@ actionsHelp()
 		      Quotes optional.
 
 		    addm "FIRST THING I NEED TO DO +project1 @context
+		    SECOND THING I NEED TO DO +project2 @context"
+		    am "FIRST THING I NEED TO DO +project1 @context
 		    SECOND THING I NEED TO DO +project2 @context"
 		      Adds FIRST THING I NEED TO DO to your todo.txt on its own line and
 		      Adds SECOND THING I NEED TO DO to you todo.txt on its own line.
@@ -998,7 +1000,7 @@ case $action in
     _addto "$TODO_FILE" "$input"
     ;;
 
-"addm")
+"addm" | "am")
     if [[ -z "$2" && $TODOTXT_FORCE = 0 ]]; then
         echo -n "Add: "
         read input
